@@ -1,4 +1,4 @@
-pipeline{
+Jekaline{
     agent any
     parameters{
         string(name: 'FILE_NAME', defaultValue: 'app', description: 'Имя исполняемого файла')
@@ -45,13 +45,13 @@ pipeline{
                 sh """./${params.FILE_NAME}"""
             }
         }
-        stage('Sending an artifact to pipe'){
+        stage('Sending an artifact to Jeka'){
             steps{
 			    // Настройки плагина Publish Over SSH
                 sshPublisher(
                              publishers: [
                                  sshPublisherDesc(
-                                     configName: "pipe",
+                                     configName: "Jeka",
                                      transfers: [
                                         sshTransfer(sourceFiles: "${params.FILE_NAME}")
                                      ]
